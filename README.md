@@ -152,10 +152,16 @@ shieldai/
 3. **Target Alert Volume**: Selects the threshold required to match analyst handling capacity (e.g. max 50 alerts/day).
 
 ### 3.4 Population Stability Index (PSI)
-$$PSI = \sum_{b=1}^{B} \left( \%_{\text{Actual}, b} - \%_{\text{Expected}, b} \right) \times \ln\left( \frac{\%_{\text{Actual}, b}}{\%_{\text{Expected}, b}} \right)$$
-- **PSI < 0.10**: Stable (no action required)
-- **0.10 ≤ PSI < 0.25**: Moderate shift (warning state)
-- **PSI ≥ 0.25**: Significant Drift (investigation & retraining recommended)
+$$\text{PSI} = \sum_{b=1}^{B} \left( P_b - Q_b \right) \times \ln\left( \frac{P_b}{Q_b} \right)$$
+
+where:
+- $P_b$: Actual (monitoring window) proportion of samples in bin $b$
+- $Q_b$: Expected (baseline reference) proportion of samples in bin $b$
+- $B$: Number of feature or score quantile buckets (typically 10)
+
+- **PSI < 0.10**: Stable (no distribution shift detected)
+- **0.10 ≤ PSI < 0.25**: Moderate shift (warning state; monitor triage queues)
+- **PSI ≥ 0.25**: Significant Drift (substantial shift; model recalibration recommended)
 
 ---
 
