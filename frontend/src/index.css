@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FAF7F7] text-charcoal-800 antialiased selection:bg-blush-200 selection:text-charcoal-900 font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+  }
+
+  h1, h2, h3, .font-heading {
+    @apply tracking-tight text-charcoal-900;
+  }
+}
+
+@layer components {
+  .luxury-card {
+    @apply bg-white border border-[#F2E5E6] rounded-2xl shadow-soft hover:shadow-card hover:border-rosegold-300/80 transition-all duration-300;
+  }
+
+  .luxury-card-interactive {
+    @apply luxury-card hover:-translate-y-0.5 hover:shadow-card-hover cursor-pointer;
+  }
+
+  .luxury-input {
+    @apply bg-white border border-[#EADBDE] rounded-xl px-3.5 py-2.5 text-xs text-charcoal-800 placeholder-charcoal-400 focus:outline-none focus:border-rosegold-500 focus:ring-2 focus:ring-blush-200 transition-all shadow-sm;
+  }
+
+  .rosegold-gradient-text {
+    @apply bg-gradient-to-r from-rosegold-600 via-blush-600 to-rosegold-500 bg-clip-text text-transparent;
+  }
+
+  .rosegold-btn {
+    @apply bg-gradient-to-r from-rosegold-500 via-blush-500 to-rosegold-600 hover:from-rosegold-600 hover:to-rosegold-700 text-white font-medium rounded-xl shadow-md shadow-rosegold-500/20 hover:shadow-lg hover:shadow-rosegold-500/30 transition-all duration-200;
+  }
+
+  .rosegold-outline-btn {
+    @apply bg-white hover:bg-blush-50 border border-rosegold-300 text-rosegold-700 font-medium rounded-xl transition-all duration-200 hover:border-rosegold-400 shadow-sm;
+  }
+}
+
+/* Elegant soft scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8D2D5;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D7AEA5;
+}
